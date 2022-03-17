@@ -15,7 +15,13 @@ public class RingTrigger : MonoBehaviour
     {
         
     }
+
      void OnTriggerEnter(Collider other){
-        Debug.Log(other.transform.parent.gameObject.name + " triggers.");
+        if (other.transform.parent.gameObject.CompareTag("CelluloDog"))
+        {
+            Debug.Log("CelluloDog triggers.");
+        }else{
+            Debug.Log(other.transform.parent.gameObject.name + " triggers.");
+        }
     }
 }
