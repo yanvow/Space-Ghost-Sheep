@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 2fc2da5e17b4502448d0f749141a8296
+  - enabled: 1
+    path: Assets/Scenes/SpaceGhostSheepGame.unity
+    guid: 26debaeac0cf9dd4991b789a7a59ffce
   m_configObjects: {}
