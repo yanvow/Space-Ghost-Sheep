@@ -13,19 +13,27 @@ public class Timer : MonoBehaviour
     public GameManager gameManager;
 
     public void Awake() {
-        initTimerValue = Time.time; 
+        initTimerValue = Time.time;
     }
 
     // Start is called before the first frame update
     public void Start() {
         timerText = GetComponent<Text>();
-        timerText.text = string.Format("{0:00}:{1:00}", 0, 0);
+        timerText.text = string.Format("TIMER {0:00}:{1:00}", 0, 0);
+        slider.maxValue = maxMinutes * 60;
+        slider.value = 0;
     }
 
     // Update is called once per frame
     public void Update() {
 
-        //IMPLEEMT YOUR CODE HERE
+        
+        float minutes = Mathf.FloorToInt(Time.time / 60);
+        float seconds = Mathf.FloorToInt(Time.time % 60);
+
+        timerText.text = string.Format("TIMER {0:00}:{1:00}", minutes, seconds);
+
+        slider.value = seconds;
         
     }
 }
