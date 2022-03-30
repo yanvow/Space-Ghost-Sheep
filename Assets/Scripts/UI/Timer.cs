@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 /**
 	This class is the implementation of the timer used in the game and how it is handled in it
@@ -7,7 +8,7 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
     private float initTimerValue;
-    private Text timerText;
+    private TextMeshProUGUI timerText;
     public Slider slider;
     public float maxMinutes = 5;
     public GameManager gameManager;
@@ -18,7 +19,7 @@ public class Timer : MonoBehaviour
 
     // Start is called before the first frame update
     public void Start() {
-        timerText = GetComponent<Text>();
+        timerText = GetComponent<TextMeshProUGUI>();
         timerText.text = string.Format("TIMER {0:00}:{1:00}", 0, 0);
         slider.maxValue = maxMinutes * 60;
         slider.value = 0;
