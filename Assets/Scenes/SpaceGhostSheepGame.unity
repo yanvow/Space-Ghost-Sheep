@@ -397,7 +397,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1280, y: -1061.912}
+  m_AnchoredPosition: {x: 1280, y: -1061.2866}
   m_SizeDelta: {x: 366.647, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &441120449
@@ -456,6 +456,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 797595070}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &441120450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -505,6 +517,7 @@ GameObject:
   - component: {fileID: 441169788}
   - component: {fileID: 441169787}
   - component: {fileID: 441169786}
+  - component: {fileID: 441169789}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -560,6 +573,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &441169789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441169785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 255ba3f660a896b0dbe44a4040fdfee8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &461662922 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3040563576298773591, guid: d44936f6062330e28ab4d37456de1881, type: 3}
+  m_PrefabInstance: {fileID: 1621229405}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &461662927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 461662922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea91a9d55808b6248be53692a0a4dc22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
 --- !u!1 &615892366
 GameObject:
   m_ObjectHideFlags: 0
@@ -2049,7 +2092,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3040563576298773591, guid: d44936f6062330e28ab4d37456de1881, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: CelluloDog
       objectReference: {fileID: 0}
     - target: {fileID: 4214186027875092558, guid: d44936f6062330e28ab4d37456de1881, type: 3}
       propertyPath: m_RootOrder
@@ -2313,8 +2356,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294901766
-  m_fontColor: {r: 0.023529414, g: 0, b: 1, a: 1}
+    rgba: 4279966437
+  m_fontColor: {r: 0.8980393, g: 0.10196079, b: 0.10588236, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2451,7 +2494,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1280, y: -898.2981}
+  m_AnchoredPosition: {x: 1280, y: -897.85144}
   m_SizeDelta: {x: 629.36, y: 90.814}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1321345559
@@ -2556,19 +2599,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3040563576298773591, guid: d44936f6062330e28ab4d37456de1881, type: 3}
   m_PrefabInstance: {fileID: 1095009743}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1359411933
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1359411931}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea91a9d55808b6248be53692a0a4dc22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weight: 1
 --- !u!114 &1359411934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2583,6 +2613,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   inputKeyboard: 0
+--- !u!114 &1359411938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359411931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b96e4f29661564443b2a4d1943bc8b2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 1211909262}
 --- !u!1 &1380122870
 GameObject:
   m_ObjectHideFlags: 0
@@ -2945,8 +2988,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 615892368}
-  maxMinutes: 5
+  maxMinutes: 1
   gameManager: {fileID: 0}
+  endgame: {fileID: 797595070}
 --- !u!1001 &1573448098
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3042,7 +3086,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3040563576298773591, guid: d44936f6062330e28ab4d37456de1881, type: 3}
       propertyPath: m_TagString
-      value: CelluloDog
+      value: CelluloSheep
       objectReference: {fileID: 0}
     - target: {fileID: 4214186027875092558, guid: d44936f6062330e28ab4d37456de1881, type: 3}
       propertyPath: m_RootOrder
@@ -3125,6 +3169,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   inputKeyboard: 1
+--- !u!114 &1641684424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1641684418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b96e4f29661564443b2a4d1943bc8b2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 1985757633}
 --- !u!1 &1716356810
 GameObject:
   m_ObjectHideFlags: 0
@@ -3159,7 +3216,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1280, y: -733.9663}
+  m_AnchoredPosition: {x: 1280, y: -733.6983}
   m_SizeDelta: {x: 674.402, y: 81.436}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1716356812
@@ -3437,13 +3494,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 1758825987}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4283,7 +4340,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1280, y: -477.07242}
+  m_AnchoredPosition: {x: 1280, y: -476.9831}
   m_SizeDelta: {x: 1518.412, y: 275.938}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1967448037
@@ -4383,25 +4440,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1967448035}
   m_CullTransparentMesh: 1
---- !u!1 &1972418356 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3040563576298773591, guid: d44936f6062330e28ab4d37456de1881, type: 3}
-  m_PrefabInstance: {fileID: 1621229405}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1972418361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1972418356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d07190bba2ba384ab93251a693acffa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weight: 1
-  inputKeyboard: 0
 --- !u!1 &1985757631
 GameObject:
   m_ObjectHideFlags: 0
@@ -4468,8 +4506,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4280492749
-  m_fontColor: {r: 0.80392164, g: 0.13333334, b: 0.13725491, a: 1}
+    rgba: 4290323753
+  m_fontColor: {r: 0.16078432, g: 0.14509805, b: 0.7254902, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
