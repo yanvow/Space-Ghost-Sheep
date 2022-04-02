@@ -21,7 +21,6 @@ public class GhostSheepBehavior : AgentBehaviour
         GameObject[] CelluloDogs;
         CelluloDogs = GameObject.FindGameObjectsWithTag("CelluloDog");
 
-
         Steering steering = new Steering();
         
         Vector3 position = transform.position;
@@ -30,14 +29,14 @@ public class GhostSheepBehavior : AgentBehaviour
         foreach (GameObject CelluloDog in CelluloDogs){
             Vector3 diff = CelluloDog.transform.position - position;
             float curDistance = diff.sqrMagnitude;
-            if (curDistance < distance && curDistance<20){    
+            if (curDistance < distance && curDistance < 20){    
                 closest = CelluloDog;
                 distance = curDistance;
             }
         }
         steering.linear = new  Vector3 (0,0,0);
-        if (distance!= Mathf.Infinity){
-        steering.linear = -(closest.transform.position - position) * agent.maxAccel;
+        if (distance != Mathf.Infinity){
+            steering.linear = -(closest.transform.position - position) * agent.maxAccel;
         }
         steering.linear = this.transform.parent.TransformDirection(Vector3.ClampMagnitude(steering.linear , agent.maxAccel));
 
