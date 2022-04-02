@@ -1,19 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Button startButton;
+    public Button playAgainButton;
 
-    // Update is called once per frame
-    void Update()
-    {
-                
-    }
+   private void Awake()
+   {
+       Time.timeScale = 0f;
+   }
+
+   private void OnEnable(){
+      startButton.onClick.AddListener(StartGame);
+
+   }
+
+   private void OnDisable(){
+      startButton.onClick.RemoveListener(StartGame);
+   }
+
+   private void StartGame()
+   {
+      Time.timeScale = 1f;
+      startButton.gameObject.SetActive(false);
+   }
 }

@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class RingTrigger : MonoBehaviour
 {
-    public 
-
-
     // Start is called before the first frame update
     void Start()
     {
