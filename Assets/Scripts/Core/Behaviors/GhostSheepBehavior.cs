@@ -4,7 +4,8 @@ using UnityEngine;
 public class GhostSheepBehavior : AgentBehaviour
 {    
     public AudioSource sheepAudio;
-    public AudioSource ghostAudio; 
+    public AudioSource ghostAudio;
+    public AudioSource decrementAudio;
     
     void Start()
     {
@@ -70,5 +71,19 @@ public class GhostSheepBehavior : AgentBehaviour
                 ghostAudio.Play();
             }
         } 
+    }
+
+    void OnCollisionEnter(Collision collisionInfo)
+    {
+        if(tag == "CelluloGhost"){
+            string name = collisionInfo.gameObject.name;
+            if(name == "CelluloAgent_3"){
+                ScoreManager.decrementScore("CelluloAgent_3");
+                decrementAudio.Play();
+            }else if(name == "CelluloAgent_2"){
+                ScoreManager.decrementScore("CelluloAgent_2");
+                decrementAudio.Play();
+            }
+        }
     }
 }

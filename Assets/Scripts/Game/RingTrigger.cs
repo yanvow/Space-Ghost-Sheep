@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RingTrigger : MonoBehaviour
 {
+    public AudioSource incrementAudio;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,9 +19,23 @@ public class RingTrigger : MonoBehaviour
     }
 
      void OnTriggerEnter(Collider other){
-        Debug.Log(other.transform.parent.gameObject.name + " triggers.");
-        if(other.transform.parent.gameObject.tag == "CelluloSheep"){
-            Debug.Log("trigger !");
+        if(other.transform.parent.gameObject.CompareTag("CelluloSheep")){
+            GameObject[] CelluloDogs;
+            CelluloDogs = GameObject.FindGameObjectsWithTag("CelluloDog");
+            Vector3 position = other.transform.parent.gameObject.transform.position;
+            GameObject closest = null;
+            float distance = Mathf.Infinity ;
+            
+            foreach (GameObject CelluloDog in CelluloDogs){
+                Vector3 diff = CelluloDog.transform.position - position;
+                float curDistance = diff.sqrMagnitude;
+                if (curDistance < distance){
+                    closest = CelluloDog;
+                }
+            }
+            ScoreManager.incrementScore(closest.name);
+            incrementAudio.Play();
+            Debug.Log("closet : " + closest.name);
         }
     }
 }

@@ -13,6 +13,7 @@ public class Timer : MonoBehaviour
     public float maxMinutes;
     public GameManager gameManager;
     public GameObject endgame;
+    public TextMeshProUGUI winnerText;
 
     public void Awake() {
         initTimerValue = Time.timeSinceLevelLoad;
@@ -36,11 +37,25 @@ public class Timer : MonoBehaviour
             minutes = 0f;
             seconds = 0f;
             endgame.SetActive(true);
+            gameWinner();
         }
 
         timerText.text = string.Format("TIMER {0:00}:{1:00}", minutes, seconds);
-
         slider.value = minutes * 60 + seconds;
-        
+    }
+
+    void gameWinner(){
+        float blueScore = ScoreManager.blueScore;
+        float redScore = ScoreManager.redScore;
+        if(blueScore > redScore){
+            winnerText.color = Color.blue;
+            winnerText.text = string.Format("TEAM BLUE");
+        }else if(redScore > blueScore){
+            winnerText.color = Color.red;
+            winnerText.text = string.Format("TEAM RED");
+        }else{
+            winnerText.color = Color.white;
+            winnerText.text = string.Format("DRAW");
+        }
     }
 }

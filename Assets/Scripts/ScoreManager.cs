@@ -5,8 +5,8 @@ using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
-    private int redScore;
-    private int blueScore;
+    public static int redScore;
+    public static int blueScore;
     public TextMeshProUGUI blueScoreText;
     public TextMeshProUGUI redScoreText;
 
@@ -26,13 +26,25 @@ public class ScoreManager : MonoBehaviour
         blueScoreText.text = string.Format("{0:00}", blueScore);
     }
 
-    void OnCollisionEnter(Collision collisionInfo)
-    {
-        string name = collisionInfo.gameObject.name;
-        if(name == "CelluloAgent_3"){
-            blueScore -= 1;
-        }else if(name == "CelluloAgent_2"){
+    public static void incrementScore(string player){
+        if(player == "CelluloAgent_2"){
+            redScore += 1;
+        }else if(player == "CelluloAgent_3"){
+            blueScore += 1;
+        }else{
+            Debug.Log("player doesn't exist");
+        }
+    }
+    
+    public static void decrementScore(string player){
+        if(player == "CelluloAgent_2"){
             redScore -= 1;
+            //decrementAudio.Play();
+        }else if(player == "CelluloAgent_3"){
+            blueScore -= 1;
+            //decrementAudio.Play();
+        }else{
+            Debug.Log("player doesn't exist");
         }
     }
 }
