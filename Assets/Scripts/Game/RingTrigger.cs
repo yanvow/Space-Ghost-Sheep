@@ -5,7 +5,6 @@ using UnityEngine;
 public class RingTrigger : MonoBehaviour
 {
     public AudioSource incrementAudio;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +14,7 @@ public class RingTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
      void OnTriggerEnter(Collider other){
@@ -31,11 +30,11 @@ public class RingTrigger : MonoBehaviour
                 float curDistance = diff.sqrMagnitude;
                 if (curDistance < distance){
                     closest = CelluloDog;
+                    distance = curDistance;
                 }
             }
-            ScoreManager.incrementScore(closest.name);
+            closest.GetComponent<ScoreManager>().incrementScore();
             incrementAudio.Play();
-            Debug.Log("closet : " + closest.name);
         }
     }
 }

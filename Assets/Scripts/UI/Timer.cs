@@ -14,9 +14,11 @@ public class Timer : MonoBehaviour
     public GameManager gameManager;
     public GameObject endgame;
     public TextMeshProUGUI winnerText;
+    public ScoreManager bluePlayer;
+    public ScoreManager redPlayer;
 
     public void Awake() {
-        initTimerValue = Time.timeSinceLevelLoad;
+        initTimerValue = Time.time;
     }
 
     // Start is called before the first frame update
@@ -33,7 +35,7 @@ public class Timer : MonoBehaviour
         float minutes = Mathf.FloorToInt(Time.timeSinceLevelLoad / 60);
         float seconds = Mathf.FloorToInt(Time.timeSinceLevelLoad % 60);
 
-        if(Time.timeSinceLevelLoad >= (maxMinutes * 60) + initTimerValue){
+        if(Time.time >= (maxMinutes * 60) + initTimerValue){
             minutes = 0f;
             seconds = 0f;
             endgame.SetActive(true);
@@ -45,8 +47,8 @@ public class Timer : MonoBehaviour
     }
 
     void gameWinner(){
-        float blueScore = ScoreManager.blueScore;
-        float redScore = ScoreManager.redScore;
+        float blueScore = bluePlayer.getScore();
+        float redScore = redPlayer.getScore();
         if(blueScore > redScore){
             winnerText.color = Color.blue;
             winnerText.text = string.Format("TEAM BLUE");
@@ -55,7 +57,7 @@ public class Timer : MonoBehaviour
             winnerText.text = string.Format("TEAM RED");
         }else{
             winnerText.color = Color.white;
-            winnerText.text = string.Format("DRAW");
+            winnerText.text = string.Format("BOTH");
         }
     }
 }

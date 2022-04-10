@@ -1165,7 +1165,6 @@ GameObject:
   - component: {fileID: 441169787}
   - component: {fileID: 441169786}
   - component: {fileID: 441169789}
-  - component: {fileID: 441169790}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -1234,21 +1233,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startButton: {fileID: 1758825989}
-  playAgainButton: {fileID: 441120449}
---- !u!114 &441169790
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 441169785}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b96e4f29661564443b2a4d1943bc8b2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blueScoreText: {fileID: 421957937}
-  redScoreText: {fileID: 126400042}
 --- !u!1 &461662922 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3040563576298773591, guid: d44936f6062330e28ab4d37456de1881, type: 3}
@@ -3702,6 +3686,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   inputKeyboard: 0
+--- !u!114 &1359411937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359411931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b96e4f29661564443b2a4d1943bc8b2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerScoreText: {fileID: 126400042}
 --- !u!4 &1377140431 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3577866819122973540, guid: 2cc1a8e1096b2874d8412b9f3378b1e4, type: 3}
@@ -4079,10 +4076,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 615892368}
-  maxMinutes: 1
+  maxMinutes: 2
   gameManager: {fileID: 0}
   endgame: {fileID: 797595070}
   winnerText: {fileID: 1321345559}
+  bluePlayer: {fileID: 1641684424}
+  redPlayer: {fileID: 1359411937}
 --- !u!1001 &1573448098
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4300,6 +4299,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   inputKeyboard: 1
+--- !u!114 &1641684424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1641684418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b96e4f29661564443b2a4d1943bc8b2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerScoreText: {fileID: 421957937}
 --- !u!4 &1647656678 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3577866819122973540, guid: 2cc1a8e1096b2874d8412b9f3378b1e4, type: 3}

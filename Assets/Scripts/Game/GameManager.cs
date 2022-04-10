@@ -1,15 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public Button startButton;
-    public Button playAgainButton;
 
-   private void Awake()
-   {
+   private void Awake(){
        Time.timeScale = 0f;
    }
 
@@ -22,8 +18,7 @@ public class GameManager : MonoBehaviour
       startButton.onClick.RemoveListener(StartGame);
    }
 
-   private void StartGame()
-   {
+   private void StartGame(){
       Time.timeScale = 1f;
       startButton.gameObject.SetActive(false);
    }

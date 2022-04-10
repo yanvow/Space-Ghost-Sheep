@@ -1,26 +1,26 @@
 ﻿using System.Linq;
 using UnityEngine;
 
+
 public class GhostSheepBehavior : AgentBehaviour
 {    
     public AudioSource sheepAudio;
     public AudioSource ghostAudio;
     public AudioSource decrementAudio;
-    
-    void Start()
-    {
-    
+    public void Start(){
+        
     }
 
     void Update()
     {
-        changeMode();
-        tag = GetComponent<CelluloAgent>().tag;
-        if(tag == "CelluloGhost"){
-            GetComponent<CelluloAgent>().SetVisualEffect(0, Color.yellow, 0);
-        }else if(tag == "CelluloSheep"){
-            GetComponent<CelluloAgent>().SetVisualEffect(0, Color.green, 0);
+        float seconds = Mathf.FloorToInt(Time.timeSinceLevelLoad);
+        int m1 = Random.Range(0,100);
+        int m2 = Random.Range(0,100);
+        int m3 = Random.Range(0,100);
+        if (m1==m2 && m2==m3) {
+            changeMode();
         }
+        tag = GetComponent<CelluloAgent>().tag;
     }
 
     public override Steering GetSteering()
@@ -57,33 +57,24 @@ public class GhostSheepBehavior : AgentBehaviour
 
        return steering;
     }
+
     public void changeMode(){
-        float seconds = Mathf.FloorToInt(Time.timeSinceLevelLoad );
-        if (seconds % 56 < 28){
-            GetComponent<CelluloAgent>().tag = "CelluloSheep";
-        }else{
+        if (GetComponent<CelluloAgent>().tag == "CelluloSheep"){
             GetComponent<CelluloAgent>().tag = "CelluloGhost";
+            ghostAudio.Play();
+            GetComponent<CelluloAgent>().SetVisualEffect(0, Color.yellow, 0);
+        }else {
+            GetComponent<CelluloAgent>().tag = "CelluloSheep";
+            sheepAudio.Play();
+            GetComponent<CelluloAgent>().SetVisualEffect(0, Color.green, 0);
         }
-        if(Time.timeScale != 0){
-            if(seconds % 56 == 0){
-                sheepAudio.Play();
-            }else if(seconds % 56 == 27){
-                ghostAudio.Play();
-            }
-        } 
     }
 
     void OnCollisionEnter(Collision collisionInfo)
     {
         if(tag == "CelluloGhost"){
-            string name = collisionInfo.gameObject.name;
-            if(name == "CelluloAgent_3"){
-                ScoreManager.decrementScore("CelluloAgent_3");
-                decrementAudio.Play();
-            }else if(name == "CelluloAgent_2"){
-                ScoreManager.decrementScore("CelluloAgent_2");
-                decrementAudio.Play();
-            }
+            collisionInfo.gameObject.GetComponent<ScoreManager>().decrementScore();
+            decrementAudio.Play();
         }
     }
 }
