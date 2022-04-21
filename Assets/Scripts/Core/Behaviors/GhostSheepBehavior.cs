@@ -13,12 +13,13 @@ public class GhostSheepBehavior : AgentBehaviour
 
     void Update()
     {
-        float seconds = Mathf.FloorToInt(Time.timeSinceLevelLoad);
         int m1 = Random.Range(0,100);
         int m2 = Random.Range(0,100);
         int m3 = Random.Range(0,100);
         if (m1==m2 && m2==m3) {
-            changeMode();
+            if(GameManager.isPlaying == true){
+                changeMode();
+            }
         }
         tag = GetComponent<CelluloAgent>().tag;
     }
@@ -45,16 +46,16 @@ public class GhostSheepBehavior : AgentBehaviour
             } 
         }
         steering.linear = new  Vector3 (0,0,0);
-
-        if (distance != Mathf.Infinity){
-            if(tag == "CelluloSheep"){
-                steering.linear = -(closest.transform.position - position) * agent.maxAccel;
-            }else {
-                steering.linear = (closest.transform.position - position) * (agent.maxAccel-10);
+        if(GameManager.isPlaying == true){
+            if (distance != Mathf.Infinity){
+                if(tag == "CelluloSheep"){
+                    steering.linear = -(closest.transform.position - position) * agent.maxAccel;
+                }else {
+                    steering.linear = (closest.transform.position - position) * (agent.maxAccel-10);
+                }
             }
+            steering.linear = this.transform.parent.TransformDirection(Vector3.ClampMagnitude(steering.linear , agent.maxAccel));
         }
-        steering.linear = this.transform.parent.TransformDirection(Vector3.ClampMagnitude(steering.linear , agent.maxAccel));
-
        return steering;
     }
 

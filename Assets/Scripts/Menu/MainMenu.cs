@@ -17,6 +17,5 @@ public class MainMenu : MonoBehaviour
     public void BackToMenu()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
-        Time.timeScale = 1f;
     }
 }

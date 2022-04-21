@@ -7,54 +7,55 @@ using TMPro;
 */
 public class Timer : MonoBehaviour
 {
-    private float initTimerValue;
     private TextMeshProUGUI timerText;
     public Slider slider;
-    public float maxMinutes;
-    public GameManager gameManager;
     public GameObject endgame;
     public TextMeshProUGUI winnerText;
-    public ScoreManager bluePlayer;
-    public ScoreManager redPlayer;
-
-    public void Awake() {
-        initTimerValue = Time.time;
-    }
+    public ScoreManager rightPlayer;
+    public ScoreManager leftPlayer;
+    private float minutes;
+    private float seconds;
+    private float time;
 
     // Start is called before the first frame update
     public void Start() {
+        time = 0f;
         timerText = GetComponent<TextMeshProUGUI>();
         timerText.text = string.Format("TIMER {0:00}:{1:00}", 0, 0);
-        slider.maxValue = maxMinutes * 60;
+        slider.maxValue = GameSetup.maxMinutes * 60;
         slider.value = 0;
     }
 
     // Update is called once per frame
     public void Update() {
         
-        float minutes = Mathf.FloorToInt(Time.timeSinceLevelLoad / 60);
-        float seconds = Mathf.FloorToInt(Time.timeSinceLevelLoad % 60);
+        if(GameManager.isPlaying == true){
+            time += Time.deltaTime;
+        }
 
-        if(Time.time >= (maxMinutes * 60) + initTimerValue){
-            minutes = 0f;
-            seconds = 0f;
+        if(time >= (GameSetup.maxMinutes * 60)){
+            time = 0f;
+            GameManager.isPlaying = false;
             endgame.SetActive(true);
             gameWinner();
         }
+
+        minutes = Mathf.FloorToInt(time / 60);
+        seconds = Mathf.FloorToInt(time % 60);
 
         timerText.text = string.Format("TIMER {0:00}:{1:00}", minutes, seconds);
         slider.value = minutes * 60 + seconds;
     }
 
     void gameWinner(){
-        float blueScore = bluePlayer.getScore();
-        float redScore = redPlayer.getScore();
-        if(blueScore > redScore){
+        float rightScore = rightPlayer.getScore();
+        float leftScore = leftPlayer.getScore();
+        if(rightScore > leftScore){
             winnerText.color = Color.blue;
-            winnerText.text = string.Format("TEAM BLUE");
-        }else if(redScore > blueScore){
+            winnerText.text = string.Format("TEAM RIGHT");
+        }else if(leftScore > rightScore){
             winnerText.color = Color.red;
-            winnerText.text = string.Format("TEAM RED");
+            winnerText.text = string.Format("TEAM LEFT");
         }else{
             winnerText.color = Color.white;
             winnerText.text = string.Format("BOTH");
