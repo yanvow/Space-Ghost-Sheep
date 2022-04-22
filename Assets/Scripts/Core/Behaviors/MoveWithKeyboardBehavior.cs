@@ -11,6 +11,10 @@ public class MoveWithKeyboardBehavior : AgentBehaviour
 {
     public InputKeyboard inputKeyboard;
 
+    public void Start(){
+        GetComponent<CelluloAgent>().SetVisualEffect(0, GameSetup.color, 0);
+    }
+
     public override Steering GetSteering()
     {
         Steering steering = new Steering();

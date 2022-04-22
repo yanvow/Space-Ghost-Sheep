@@ -4705,6 +4705,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementDropdown: {fileID: 1708034904}
   maxMinutesText: {fileID: 1965997661}
+  redSlider: {fileID: 3739844}
+  greenSlider: {fileID: 2093493694}
+  blueSlider: {fileID: 2093193245}
+  playerText: {fileID: 1430987677}
 --- !u!1 &1005232779
 GameObject:
   m_ObjectHideFlags: 0
