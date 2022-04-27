@@ -4,24 +4,29 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
    public static bool isPlaying;
+   public Button startButton;
    public Button pauseButton;
    public Button resumeButton;
 
    private void Awake(){
-      isPlaying = true;
+      isPlaying = false;
    }
 
     private void OnEnable(){
+      startButton.onClick.AddListener(StartGame);
       pauseButton.onClick.AddListener(PauseGame);
       resumeButton.onClick.AddListener(ResumeGame);
    }
    private void OnDisable(){
+      startButton.onClick.RemoveListener(StartGame);
       pauseButton.onClick.RemoveListener(PauseGame);
       resumeButton.onClick.RemoveListener(ResumeGame);
    }
 
-   private void StartGame(){
+   public void StartGame(){
       isPlaying = true;
+      startButton.gameObject.SetActive(false);
+      pauseButton.gameObject.SetActive(true);
    }
 
    private void PauseGame(){

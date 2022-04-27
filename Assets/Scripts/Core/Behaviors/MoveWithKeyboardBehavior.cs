@@ -9,6 +9,7 @@ public enum InputKeyboard{
 }
 public class MoveWithKeyboardBehavior : AgentBehaviour
 {
+    public GameManager gameManager;
     public InputKeyboard inputKeyboard;
 
     public void Start(){
@@ -35,5 +36,9 @@ public class MoveWithKeyboardBehavior : AgentBehaviour
         }
         
         return steering;
+    }
+
+    public override void OnCelluloLongTouch(int key){
+        gameManager.StartGame();
     }
 }

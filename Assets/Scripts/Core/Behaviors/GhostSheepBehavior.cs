@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GhostSheepBehavior : AgentBehaviour
 {    
+    public GameManager gameManager;
     public AudioSource sheepAudio;
     public AudioSource ghostAudio;
     public AudioSource decrementAudio;
@@ -22,6 +23,17 @@ public class GhostSheepBehavior : AgentBehaviour
             }
         }
         tag = GetComponent<CelluloAgent>().tag;
+        
+        GameObject[] CelluloDogs;
+        CelluloDogs = GameObject.FindGameObjectsWithTag("CelluloDog");
+        foreach (GameObject CelluloDog in CelluloDogs){
+            if(tag == "CelluloGhost"){
+                CelluloDog.GetComponent<CelluloAgent>().MoveOnStone();
+            }else{
+                CelluloDog.GetComponent<CelluloAgent>().ClearHapticFeedback();
+                CelluloDog.GetComponent<CelluloAgent>().SetCasualBackdriveAssistEnabled(true);
+            }
+        }
     }
 
     public override Steering GetSteering()
@@ -77,5 +89,9 @@ public class GhostSheepBehavior : AgentBehaviour
             collisionInfo.gameObject.GetComponent<ScoreManager>().decrementScore();
             decrementAudio.Play();
         }
+    }
+
+    public override void OnCelluloLongTouch(int key){
+        gameManager.StartGame();
     }
 }

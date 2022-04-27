@@ -11,10 +11,14 @@ public class GameSetup : MonoBehaviour
     public TextMeshProUGUI maxMinutesText;
     public static string movement;
     public static float maxMinutes = 2f;
-    public Slider redSlider;
-    public Slider greenSlider;
-    public Slider blueSlider;
-    public TextMeshProUGUI playerText;
+    public Slider red1Slider;
+    public Slider green1Slider;
+    public Slider blue1Slider;
+    public Slider red2Slider;
+    public Slider green2Slider;
+    public Slider blue2Slider;
+    public TextMeshProUGUI player1Text;
+    public TextMeshProUGUI player2Text;
     public static Color color;
     private int colorValue = 0;
 
@@ -29,8 +33,9 @@ public class GameSetup : MonoBehaviour
     {
         movement = movementDropdown.options[movementDropdown.value].text;
         maxMinutesText.text = maxMinutes.ToString();
-        playerText.color = new Color(redSlider.value, greenSlider.value, blueSlider.value);
-        color = new Color(redSlider.value, greenSlider.value, blueSlider.value);
+        player1Text.color = new Color(red1Slider.value, green1Slider.value, blue1Slider.value);
+        player2Text.color = new Color(red2Slider.value, green2Slider.value, blue2Slider.value);
+        color = new Color(red1Slider.value, green1Slider.value, blue1Slider.value);
         //robot.SetVisualEffect(visualEffectDropdown.value, (long)(redSlider.value * 255), (long)(greenSlider.value * 255), (long) (blueSlider.value * 255), colorValue);
     }
 

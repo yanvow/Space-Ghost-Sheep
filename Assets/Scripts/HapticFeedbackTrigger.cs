@@ -23,6 +23,6 @@ public class HapticFeedbackTrigger : MonoBehaviour
 
     void OnTriggerEnter(Collider other){
         Debug.Log(other.transform.parent.gameObject.name + "star triggers.");
-        other.attachedRigidbody.GetComponent<Cellulo>().SimpleVibrate(simpleXIntensity, simpleYIntensity, simpleThetaIntensity, simplePeriod, simpleDuration);;
+        other.attachedRigidbody.GetComponent<Cellulo>().SimpleVibrate(simpleXIntensity, simpleYIntensity, simpleThetaIntensity, simplePeriod, simpleDuration);
     }
 }

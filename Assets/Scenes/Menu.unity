@@ -4267,7 +4267,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1742608133}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
         m_MethodName: set_mute
-        m_Mode: 6
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4276,7 +4276,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!1 &830409047
 GameObject:
   m_ObjectHideFlags: 0
@@ -4705,10 +4705,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementDropdown: {fileID: 1708034904}
   maxMinutesText: {fileID: 1965997661}
-  redSlider: {fileID: 3739844}
-  greenSlider: {fileID: 2093493694}
-  blueSlider: {fileID: 2093193245}
-  playerText: {fileID: 1430987677}
+  red1Slider: {fileID: 3739844}
+  green1Slider: {fileID: 2093493694}
+  blue1Slider: {fileID: 2093193245}
+  red2Slider: {fileID: 94158566}
+  green2Slider: {fileID: 587367380}
+  blue2Slider: {fileID: 300206290}
+  player1Text: {fileID: 1430987677}
+  player2Text: {fileID: 309670340}
 --- !u!1 &1005232779
 GameObject:
   m_ObjectHideFlags: 0
@@ -6536,7 +6540,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Music
+  m_text: MUTE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 68abdb62dae462deb881a867c51cca0e, type: 2}
   m_sharedMaterial: {fileID: 6643261074103084656, guid: 68abdb62dae462deb881a867c51cca0e, type: 2}
