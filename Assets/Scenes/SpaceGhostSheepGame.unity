@@ -1625,6 +1625,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
+  gameManager: {fileID: 441169789}
   sheepAudio: {fileID: 1310748664}
   ghostAudio: {fileID: 65375594}
   decrementAudio: {fileID: 325309569}
@@ -4853,6 +4854,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
+  gameManager: {fileID: 441169789}
   inputKeyboard: 0
 --- !u!114 &1359411937
 MonoBehaviour:
@@ -5717,6 +5719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
+  gameManager: {fileID: 441169789}
   inputKeyboard: 1
 --- !u!114 &1641684424
 MonoBehaviour:
