@@ -22,7 +22,7 @@ public class Timer : MonoBehaviour
         time = 0f;
         timerText = GetComponent<TextMeshProUGUI>();
         timerText.text = string.Format("TIMER {0:00}:{1:00}", 0, 0);
-        slider.maxValue = GameSetup.maxMinutes * 60;
+        slider.maxValue = GameSetup.gameDuration * 60;
         slider.value = 0;
     }
 
@@ -33,7 +33,7 @@ public class Timer : MonoBehaviour
             time += Time.deltaTime;
         }
 
-        if(time >= (GameSetup.maxMinutes * 60)){
+        if(time >= (GameSetup.gameDuration * 60)){
             time = 0f;
             GameManager.isPlaying = false;
             endgame.SetActive(true);
@@ -51,10 +51,10 @@ public class Timer : MonoBehaviour
         float rightScore = rightPlayer.getScore();
         float leftScore = leftPlayer.getScore();
         if(rightScore > leftScore){
-            winnerText.color = Color.blue;
+            winnerText.color = GameSetup.color2;
             winnerText.text = string.Format("TEAM RIGHT");
         }else if(leftScore > rightScore){
-            winnerText.color = Color.red;
+            winnerText.color = GameSetup.color1;
             winnerText.text = string.Format("TEAM LEFT");
         }else{
             winnerText.color = Color.white;

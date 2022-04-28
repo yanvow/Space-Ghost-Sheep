@@ -1149,7 +1149,7 @@ GameObject:
   - component: {fileID: 421957938}
   - component: {fileID: 421957937}
   m_Layer: 5
-  m_Name: Player1ScoreText
+  m_Name: Player2ScoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1428,7 +1428,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1280, y: -1061.7844}
+  m_AnchoredPosition: {x: 1280, y: -1062.3975}
   m_SizeDelta: {x: 366.647, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &441120449
@@ -1609,6 +1609,10 @@ MonoBehaviour:
   resumeButton: {fileID: 407429876}
   player1: {fileID: 1641684418}
   player2: {fileID: 1359411931}
+  scoreText1: {fileID: 126400042}
+  scoreText2: {fileID: 421957937}
+  longPress1: 0
+  longPress2: 0
 --- !u!1 &461662922 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3040563576298773591, guid: d44936f6062330e28ab4d37456de1881, type: 3}
@@ -3184,7 +3188,7 @@ GameObject:
   - component: {fileID: 951624559}
   - component: {fileID: 951624558}
   m_Layer: 5
-  m_Name: Player2Score
+  m_Name: Player1Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3661,7 +3665,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4052793752220753789, guid: 6f5f6d7624c2ce5cc8896e584e30f1c5, type: 3}
       propertyPath: m_Name
-      value: RightCelluloAgent
+      value: LeftCelluloAgent
       objectReference: {fileID: 0}
     - target: {fileID: 4052793752220753789, guid: 6f5f6d7624c2ce5cc8896e584e30f1c5, type: 3}
       propertyPath: m_TagString
@@ -4354,7 +4358,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3040563576298773591, guid: d44936f6062330e28ab4d37456de1881, type: 3}
       propertyPath: m_Name
-      value: LeftCelluloAgent
+      value: RightCelluloAgent
       objectReference: {fileID: 0}
     - target: {fileID: 3040563576298773591, guid: d44936f6062330e28ab4d37456de1881, type: 3}
       propertyPath: m_TagString
@@ -4738,7 +4742,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1280, y: -898.207}
+  m_AnchoredPosition: {x: 1280, y: -898.6449}
   m_SizeDelta: {x: 629.36, y: 90.814}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1321345559
@@ -4857,7 +4861,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   gameManager: {fileID: 441169789}
-  inputKeyboardString: 
+  inputKeyboardString: arrows
+  color: {r: 1, g: 0, b: 0.027450982, a: 1}
+  longPress: 0
 --- !u!114 &1359411937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4870,7 +4876,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b96e4f29661564443b2a4d1943bc8b2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerScoreText: {fileID: 126400042}
+  playerScoreText: {fileID: 421957937}
 --- !u!4 &1377140431 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3577866819122973540, guid: 2cc1a8e1096b2874d8412b9f3378b1e4, type: 3}
@@ -5324,8 +5330,8 @@ MonoBehaviour:
   slider: {fileID: 615892368}
   endgame: {fileID: 797595070}
   winnerText: {fileID: 1321345559}
-  rightPlayer: {fileID: 1641684424}
-  leftPlayer: {fileID: 1359411937}
+  rightPlayer: {fileID: 1359411937}
+  leftPlayer: {fileID: 1641684424}
 --- !u!1001 &1573448098
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5722,7 +5728,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   gameManager: {fileID: 441169789}
-  inputKeyboardString: 
+  inputKeyboardString: wasd
+  color: {r: 0.04705883, g: 0, b: 1, a: 1}
+  longPress: 0
 --- !u!114 &1641684424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5735,7 +5743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b96e4f29661564443b2a4d1943bc8b2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerScoreText: {fileID: 421957937}
+  playerScoreText: {fileID: 126400042}
 --- !u!4 &1647656678 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3577866819122973540, guid: 2cc1a8e1096b2874d8412b9f3378b1e4, type: 3}
@@ -5985,7 +5993,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1280, y: -733.9116}
+  m_AnchoredPosition: {x: 1280, y: -734.1744}
   m_SizeDelta: {x: 674.402, y: 81.436}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1716356812
@@ -6434,7 +6442,7 @@ GameObject:
   - component: {fileID: 1786895714}
   - component: {fileID: 1786895713}
   m_Layer: 5
-  m_Name: Player1Score
+  m_Name: Player2Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7513,7 +7521,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1280, y: -477.0542}
+  m_AnchoredPosition: {x: 1280, y: -477.14178}
   m_SizeDelta: {x: 1518.412, y: 275.938}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1967448037

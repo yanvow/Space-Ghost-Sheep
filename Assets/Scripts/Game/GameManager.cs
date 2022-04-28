@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +11,8 @@ public class GameManager : MonoBehaviour
    public Button resumeButton;
    public GameObject player1;
    public GameObject player2;
+   public TextMeshProUGUI scoreText1;
+   public TextMeshProUGUI scoreText2;
    public bool longPress1;
    public bool longPress2;
 
@@ -24,6 +28,8 @@ public class GameManager : MonoBehaviour
       player2.GetComponent<MoveWithKeyboardBehavior>().color = GameSetup.color2;
       player1.GetComponent<MoveWithKeyboardBehavior>().inputKeyboardString = GameSetup.movement1;
       player2.GetComponent<MoveWithKeyboardBehavior>().inputKeyboardString = GameSetup.movement2;
+      scoreText1.color = GameSetup.color1;
+      scoreText2.color = GameSetup.color2;
    }
 
    private void OnEnable(){

@@ -7,10 +7,11 @@ using TMPro;
 
 public class GameSetup : MonoBehaviour
 {
+    public float maxMinutes;
+    public float minMinutes;
     public TMP_Dropdown movementDropdown1;
     public TMP_Dropdown movementDropdown2;
-    public TextMeshProUGUI maxMinutesText;
-    public static float maxMinutes = 2f;
+    public TextMeshProUGUI gameDurationText;
     public Slider red1Slider;
     public Slider green1Slider;
     public Slider blue1Slider;
@@ -23,17 +24,23 @@ public class GameSetup : MonoBehaviour
     public static Color color2;
     public static string movement1;
     public static string movement2;
+    public static float gameDuration = 2f;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        red1Slider.value = 1;
+        green1Slider.value = 0;
+        blue1Slider.value = 0;
+        red2Slider.value = 0;
+        green2Slider.value = 0;
+        blue2Slider.value = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        maxMinutesText.text = maxMinutes.ToString();
+        gameDurationText.text = gameDuration.ToString();
         player1Text.color = new Color(red1Slider.value, green1Slider.value, blue1Slider.value);
         player2Text.color = new Color(red2Slider.value, green2Slider.value, blue2Slider.value);
         color1 = new Color(red1Slider.value, green1Slider.value, blue1Slider.value);
@@ -43,14 +50,14 @@ public class GameSetup : MonoBehaviour
     }
 
     public void incrementMaxMinutes(){
-        if(maxMinutes < 5){ 
-            maxMinutes += 1;
+        if(gameDuration < maxMinutes){ 
+            gameDuration += 1;
         }
     }
 
-     public void decrementMaxMinutes(){
-        if(maxMinutes > 2){ 
-            maxMinutes -= 1;
+    public void decrementMaxMinutes(){
+        if(gameDuration > minMinutes){ 
+            gameDuration -= 1;
         }
     }
 }
