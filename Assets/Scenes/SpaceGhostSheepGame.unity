@@ -1607,6 +1607,8 @@ MonoBehaviour:
   startButton: {fileID: 439123735}
   pauseButton: {fileID: 2103087166}
   resumeButton: {fileID: 407429876}
+  player1: {fileID: 1641684418}
+  player2: {fileID: 1359411931}
 --- !u!1 &461662922 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3040563576298773591, guid: d44936f6062330e28ab4d37456de1881, type: 3}
@@ -4855,7 +4857,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   gameManager: {fileID: 441169789}
-  inputKeyboard: 0
+  inputKeyboardString: 
 --- !u!114 &1359411937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5720,7 +5722,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   gameManager: {fileID: 441169789}
-  inputKeyboard: 1
+  inputKeyboardString: 
 --- !u!114 &1641684424
 MonoBehaviour:
   m_ObjectHideFlags: 0

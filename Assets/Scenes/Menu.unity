@@ -4703,7 +4703,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e7f06bc61ffe8f459442bc464bb081c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementDropdown: {fileID: 1708034904}
+  movementDropdown1: {fileID: 1708034904}
+  movementDropdown2: {fileID: 383332517}
   maxMinutesText: {fileID: 1965997661}
   red1Slider: {fileID: 3739844}
   green1Slider: {fileID: 2093493694}

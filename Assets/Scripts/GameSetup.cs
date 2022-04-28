@@ -7,9 +7,9 @@ using TMPro;
 
 public class GameSetup : MonoBehaviour
 {
-    public TMP_Dropdown movementDropdown;
+    public TMP_Dropdown movementDropdown1;
+    public TMP_Dropdown movementDropdown2;
     public TextMeshProUGUI maxMinutesText;
-    public static string movement;
     public static float maxMinutes = 2f;
     public Slider red1Slider;
     public Slider green1Slider;
@@ -19,8 +19,10 @@ public class GameSetup : MonoBehaviour
     public Slider blue2Slider;
     public TextMeshProUGUI player1Text;
     public TextMeshProUGUI player2Text;
-    public static Color color;
-    private int colorValue = 0;
+    public static Color color1;
+    public static Color color2;
+    public static string movement1;
+    public static string movement2;
 
     // Start is called before the first frame update
     void Start()
@@ -31,12 +33,13 @@ public class GameSetup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movement = movementDropdown.options[movementDropdown.value].text;
         maxMinutesText.text = maxMinutes.ToString();
         player1Text.color = new Color(red1Slider.value, green1Slider.value, blue1Slider.value);
         player2Text.color = new Color(red2Slider.value, green2Slider.value, blue2Slider.value);
-        color = new Color(red1Slider.value, green1Slider.value, blue1Slider.value);
-        //robot.SetVisualEffect(visualEffectDropdown.value, (long)(redSlider.value * 255), (long)(greenSlider.value * 255), (long) (blueSlider.value * 255), colorValue);
+        color1 = new Color(red1Slider.value, green1Slider.value, blue1Slider.value);
+        color2 = new Color(red2Slider.value, green2Slider.value, blue2Slider.value);
+        movement1 = movementDropdown1.options[movementDropdown1.value].text;
+        movement2 = movementDropdown2.options[movementDropdown2.value].text;
     }
 
     public void incrementMaxMinutes(){

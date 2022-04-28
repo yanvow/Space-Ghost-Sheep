@@ -17,7 +17,7 @@ public class CelluloAgent : SteeringAgent
 
     private GameObject _leds;
     [SerializeField]
-    private Color initialColor; //!< Initial LED Color
+    public Color initialColor; //!< Initial LED Color
     private float controlPeriod = Config.DEFAULT_CONTROL_PERIOD;  //!< Contol loop perid
 
 	/// <summary>

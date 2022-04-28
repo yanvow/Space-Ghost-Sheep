@@ -90,8 +90,4 @@ public class GhostSheepBehavior : AgentBehaviour
             decrementAudio.Play();
         }
     }
-
-    public override void OnCelluloLongTouch(int key){
-        gameManager.StartGame();
-    }
 }

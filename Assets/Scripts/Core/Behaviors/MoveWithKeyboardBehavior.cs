@@ -10,10 +10,19 @@ public enum InputKeyboard{
 public class MoveWithKeyboardBehavior : AgentBehaviour
 {
     public GameManager gameManager;
-    public InputKeyboard inputKeyboard;
+    private InputKeyboard inputKeyboard;
+    public string inputKeyboardString;
+    public Color color;
+    public bool longPress;
 
     public void Start(){
-        GetComponent<CelluloAgent>().SetVisualEffect(0, GameSetup.color, 0);
+        longPress = false;
+        GetComponent<CelluloAgent>().SetVisualEffect(0, color, 0);
+        if(inputKeyboardString == "arrows"){
+            inputKeyboard = InputKeyboard.arrows;
+        }else{
+            inputKeyboard = InputKeyboard.wasd;
+        }
     }
 
     public override Steering GetSteering()
@@ -39,6 +48,7 @@ public class MoveWithKeyboardBehavior : AgentBehaviour
     }
 
     public override void OnCelluloLongTouch(int key){
-        gameManager.StartGame();
+        longPress = true;
+        gameManager.StartGamewithCellulo();
     }
 }
