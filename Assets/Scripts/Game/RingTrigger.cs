@@ -17,7 +17,7 @@ public class RingTrigger : MonoBehaviour
 
     }
 
-     void OnTriggerEnter(Collider other){
+    void OnTriggerEnter(Collider other){
         if(other.transform.parent.gameObject.CompareTag("CelluloSheep")){
             GameObject[] CelluloDogs;
             CelluloDogs = GameObject.FindGameObjectsWithTag("CelluloDog");

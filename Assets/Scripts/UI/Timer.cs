@@ -13,9 +13,13 @@ public class Timer : MonoBehaviour
     public TextMeshProUGUI winnerText;
     public ScoreManager rightPlayer;
     public ScoreManager leftPlayer;
+    public GameObject gem;
+    public AudioSource popGem;
     private float minutes;
     private float seconds;
     private float time;
+    private bool tst;
+    private int gemFrequency = 20;
 
     // Start is called before the first frame update
     public void Start() {
@@ -24,6 +28,7 @@ public class Timer : MonoBehaviour
         timerText.text = string.Format("TIMER {0:00}:{1:00}", 0, 0);
         slider.maxValue = GameSetup.gameDuration * 60;
         slider.value = 0;
+        tst = true; 
     }
 
     // Update is called once per frame
@@ -45,6 +50,25 @@ public class Timer : MonoBehaviour
 
         timerText.text = string.Format("TIMER {0:00}:{1:00}", minutes, seconds);
         slider.value = minutes * 60 + seconds;
+
+        if (seconds % gemFrequency == 0 && seconds != 0){
+            if(tst){
+                gem.transform.position = new Vector3(Random.Range(1f,26f), 0.8f, Random.Range(-19f, 0));
+                gem.SetActive(true);
+                tst = false;
+                popGem.Play();
+                GameObject[] CelluloDogs = GameObject.FindGameObjectsWithTag("CelluloDog");
+                foreach (GameObject CelluloDog in CelluloDogs){
+                    CelluloDog.GetComponent<MoveWithKeyboardBehavior>().hasGem = false;
+                }
+            }
+        }else{
+            tst = true;
+        }
+        
+   /*      if (seconds % 20 == 0){  
+            gem.SetActive(false);
+        } */
     }
 
     void gameWinner(){

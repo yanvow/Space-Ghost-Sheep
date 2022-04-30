@@ -14,6 +14,7 @@ public class MoveWithKeyboardBehavior : AgentBehaviour
     public string inputKeyboardString;
     public Color color;
     public bool longPress;
+    public bool hasGem;
 
     public void Start(){
         longPress = false;
@@ -23,6 +24,7 @@ public class MoveWithKeyboardBehavior : AgentBehaviour
         }else{
             inputKeyboard = InputKeyboard.wasd;
         }
+        hasGem = false;
     }
 
     public override Steering GetSteering()
@@ -50,5 +52,16 @@ public class MoveWithKeyboardBehavior : AgentBehaviour
     public override void OnCelluloLongTouch(int key){
         longPress = true;
         gameManager.StartGamewithCellulo();
+    }
+
+    void OnCollisionEnter(Collision collisionInfo)
+    {
+        if(collisionInfo.gameObject.tag == "CelluloDog" && hasGem){
+            collisionInfo.gameObject.GetComponent<ScoreManager>().decrementScore();
+            collisionInfo.gameObject.GetComponent<ScoreManager>().decrementScore();
+            gameObject.GetComponent<ScoreManager>().incrementScore();
+            gameObject.GetComponent<ScoreManager>().incrementScore();
+            hasGem = false; 
+        }
     }
 }
