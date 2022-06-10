@@ -14,14 +14,14 @@ public class GhostSheepBehavior : AgentBehaviour
 
     void Update()
     {
-        int m1 = Random.Range(0,100);
+        /* int m1 = Random.Range(0,100);
         int m2 = Random.Range(0,100);
         int m3 = Random.Range(0,100);
         if (m1==m2 && m2==m3) {
             if(GameManager.isPlaying == true){
                 changeMode();
             }
-        }
+        } */
         tag = GetComponent<CelluloAgent>().tag;
         
         GameObject[] CelluloDogs;
@@ -34,10 +34,15 @@ public class GhostSheepBehavior : AgentBehaviour
                 CelluloDog.GetComponent<CelluloAgent>().SetCasualBackdriveAssistEnabled(true);
             }
         }
+
+        
     }
 
     public override Steering GetSteering()
     {
+        if(GameManager.isPlayingMiniGame){
+            return new Steering();
+        }
         GameObject[] CelluloDogs;
         CelluloDogs = GameObject.FindGameObjectsWithTag("CelluloDog");
 
@@ -57,7 +62,8 @@ public class GhostSheepBehavior : AgentBehaviour
                 }
             } 
         }
-        steering.linear = new  Vector3 (0,0,0);
+        steering.linear = new Vector3 (0,0,0);
+        
         if(GameManager.isPlaying == true){
             if (distance != Mathf.Infinity){
                 if(tag == "CelluloSheep"){

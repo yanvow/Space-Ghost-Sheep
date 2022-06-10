@@ -56,7 +56,7 @@ public class MoveWithKeyboardBehavior : AgentBehaviour
 
     void OnCollisionEnter(Collision collisionInfo)
     {
-        if(collisionInfo.gameObject.tag == "CelluloDog" && hasGem){
+        if(collisionInfo.gameObject.tag == "CelluloDog" && hasGem && !GameManager.isPlayingMiniGame){
             collisionInfo.gameObject.GetComponent<ScoreManager>().decrementScore();
             collisionInfo.gameObject.GetComponent<ScoreManager>().decrementScore();
             gameObject.GetComponent<ScoreManager>().incrementScore();

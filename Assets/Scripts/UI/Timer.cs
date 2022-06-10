@@ -34,7 +34,7 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     public void Update() {
         
-        if(GameManager.isPlaying == true){
+        if(GameManager.isPlaying && !GameManager.isPlayingMiniGame){
             time += Time.deltaTime;
         }
 
@@ -65,10 +65,6 @@ public class Timer : MonoBehaviour
         }else{
             tst = true;
         }
-        
-   /*      if (seconds % 20 == 0){  
-            gem.SetActive(false);
-        } */
     }
 
     void gameWinner(){
