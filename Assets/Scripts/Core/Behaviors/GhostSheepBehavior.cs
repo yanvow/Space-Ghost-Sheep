@@ -14,14 +14,14 @@ public class GhostSheepBehavior : AgentBehaviour
 
     void Update()
     {
-        /* int m1 = Random.Range(0,100);
+        int m1 = Random.Range(0,100);
         int m2 = Random.Range(0,100);
         int m3 = Random.Range(0,100);
         if (m1==m2 && m2==m3) {
             if(GameManager.isPlaying == true){
                 changeMode();
             }
-        } */
+        }
         tag = GetComponent<CelluloAgent>().tag;
         
         GameObject[] CelluloDogs;

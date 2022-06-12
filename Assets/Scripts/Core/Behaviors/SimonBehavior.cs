@@ -312,7 +312,6 @@ public class SimonBehavior : AgentBehaviour
         GetComponent<CelluloAgent>().SetVisualEffect(VisualEffect.VisualEffectConstSingle, initColor, led);
     }
 
-    //key <=> index de la led pressed
     public override void OnCelluloTouchBegan(int key){
         Debug.Log("Pressed !" + key);
         if(key == 0){
