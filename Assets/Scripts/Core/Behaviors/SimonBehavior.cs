@@ -12,7 +12,11 @@ public class SimonBehavior : AgentBehaviour
     public Button led4Button;
     public Button led5Button;
 
+    public AudioSource incrementAudio;
+
     public GameObject SimonMenu;
+    public GameObject MiniGameWon;
+    public GameObject MiniGameLost;
 
     private Color initColor;
 
@@ -49,10 +53,18 @@ public class SimonBehavior : AgentBehaviour
         StartCoroutine(co);
     }
 
+    IEnumerator gameLost()
+    {
+        yield return new WaitForSeconds(2);
+        MiniGameLost.SetActive(false);
+    }
+
     private bool IsLED0Pressed(){
         if(led0){ return false;}
         else if(led1 || led2 || led3 || led4 || led5){
             Debug.Log("Lost!");
+            MiniGameLost.SetActive(true);
+            StartCoroutine(gameLost());
             GameManager.isMiniGamefinished = true;
             StopCoroutine(co);
             return false;
@@ -64,6 +76,8 @@ public class SimonBehavior : AgentBehaviour
         if(led1){ return false;}
         else if(led0 || led2 || led3 || led4 || led5){
             Debug.Log("Lost!");
+            MiniGameLost.SetActive(true);
+            StartCoroutine(gameLost());    
             GameManager.isMiniGamefinished = true;
             StopCoroutine(co);
             return false;
@@ -75,6 +89,8 @@ public class SimonBehavior : AgentBehaviour
         if(led2){ return false;}
         else if(led0 || led1 || led3 || led4 || led5){
             Debug.Log("Lost!");
+            MiniGameLost.SetActive(true);
+            StartCoroutine(gameLost());
             GameManager.isMiniGamefinished = true;
             StopCoroutine(co);
             return false;
@@ -86,6 +102,8 @@ public class SimonBehavior : AgentBehaviour
        if(led3){ return false;}
         else if(led0 || led1 || led2 || led4 || led5){
             Debug.Log("Lost!");
+            MiniGameLost.SetActive(true);
+            StartCoroutine(gameLost());
             GameManager.isMiniGamefinished = true;
             StopCoroutine(co);
             return false;
@@ -97,6 +115,8 @@ public class SimonBehavior : AgentBehaviour
         if(led4){ return false;}
         else if(led0 || led1 || led2 || led3 || led5){
             Debug.Log("Lost!");
+            MiniGameLost.SetActive(true);
+            StartCoroutine(gameLost());
             GameManager.isMiniGamefinished = true;
             StopCoroutine(co);
             return false;
@@ -108,6 +128,8 @@ public class SimonBehavior : AgentBehaviour
         if(led5){ return false;}
         else if(led0 || led1 || led2 || led3 || led4){
             Debug.Log("Lost!");
+            MiniGameLost.SetActive(true);
+            StartCoroutine(gameLost());
             GameManager.isMiniGamefinished = true;
             StopCoroutine(co);
             return false;
@@ -117,12 +139,12 @@ public class SimonBehavior : AgentBehaviour
 
     IEnumerator waiter()
     {
-        yield return new WaitForSeconds(4);
-        Debug.Log("Game has started");
         SimonMenu.SetActive(true);
+        yield return new WaitForSeconds(6);
+        Debug.Log("Game has started");
+        SimonMenu.SetActive(false);
         yield return new WaitForSeconds(4);
         Debug.Log("Game is playing");
-        SimonMenu.SetActive(false);
         yield return new WaitForSeconds(2);
         int[] ledSeq1 = new int[] {1};
         int[] ledSeq2 = new int[] {1, 2};
@@ -130,6 +152,13 @@ public class SimonBehavior : AgentBehaviour
         int[] ledSeq4 = new int[] {1, 2, 5, 0};
         int[] ledSeq5 = new int[] {1, 2, 5, 0, 5};
         int[] ledSeq6 = new int[] {1, 2, 5, 0, 5, 3};
+
+        led0 = false; 
+        led1 = false;
+        led2 = false;
+        led3 = false;
+        led4 = false;
+        led5 = false;
 
         Debug.Log("Sequence 1");
 
@@ -139,9 +168,6 @@ public class SimonBehavior : AgentBehaviour
         }
 
         GetComponent<CelluloAgent>().SetVisualEffect(0, initColor, 0);
-
-        //yield return new WaitWhile(() => led1 == true);
-        //yield return new WaitWhile(IsLED1Pressed);
 
         yield return new WaitWhile(IsLED1Pressed);
         led1 = false;
@@ -271,10 +297,12 @@ public class SimonBehavior : AgentBehaviour
 
         yield return new WaitForSeconds(2);
 
+        MiniGameWon.SetActive(true);
+        yield return new WaitForSeconds(2);
         Debug.Log("increment Score");
         GetComponent<ScoreManager>().incrementScore();
-
-        yield return new WaitForSeconds(35);
+        incrementAudio.Play();
+        MiniGameWon.SetActive(false);
         GameManager.isMiniGamefinished = true;
     }
 

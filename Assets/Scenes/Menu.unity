@@ -1996,7 +1996,7 @@ Animator:
   m_GameObject: {fileID: 332633827}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d28d162f842fb984bb237cdaaeeede77, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3146,7 +3146,7 @@ Animator:
   m_GameObject: {fileID: 567259846}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fc59aa4a181d9c1449cca99846e5e518, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -5072,7 +5072,7 @@ Animator:
   m_GameObject: {fileID: 1004275480}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 070ed2da8574c79439fb41729e715254, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -7609,7 +7609,7 @@ Animator:
   m_GameObject: {fileID: 1428836639}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d02fed35d77007e4aaeadcac3a448877, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -7638,7 +7638,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1ea72ed18bb86024d967ab006cdb7405, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 78ee96c9044fae349b6bd1895b37ca28, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -7972,7 +7972,7 @@ Animator:
   m_GameObject: {fileID: 1434268144}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 30a10623a97f0d140b56b2e5e029eac6, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -8001,7 +8001,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 63ae65646917338409b903db10b02120, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7aebce5fd826e114597781c67b5707ec, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -8633,23 +8633,28 @@ MonoBehaviour:
   m_text: 'THERE ARE THREE ROBOTS: RED, BLUE AND GREEN.
 
     THE RED ROBOT BELONG
-    TO THE FIRST PLAYER AND CAN BE MOVED USING THE MOUSE (CLICK AND DRAG).
+    TO THE FIRST PLAYER.
+
+    THE BLUE ROBOT BELONGS TO THE SECOND PLAYER.
 
     THE
-    BLUE ROBOT BELONGS TO THE SECOND PLAYER AND CAN BE MOVED USING THE KEYBOARD WASD.
+    ROBOTS CAN BE MOVED USING THE KEYBOARD WASD OR ARROWS.
 
-    YOUR
-    GOAL IS TO GET AS MUCH POINTS AS POSSIBLE.
+    YOUR GOAL IS TO GET
+    AS MUCH POINTS AS POSSIBLE.
 
-    TO EARN A POINT YOU SHOULD PUT
-    THE GREEN ROBOT (SHEEP) IN THE GREEN RING. THE PLAYER WHO''S CLOSEST TO THE SHEEP
-    AT THE TIME WILL EARN THE POINT.
+    TO EARN A POINT YOU SHOULD PUT THE GREEN ROBOT
+    (SHEEP) IN THE GREEN RING. THE PLAYER WHO''S CLOSEST TO THE SHEEP AT THE TIME
+    WILL EARN THE POINT.
 
-    RANDOMLY DURING THE GAME, THE SHEEP TURN
-    INTO A MONSTER THAT CHASES YOU AND IF IT CATCHES YOU, YOU WILL LOSE A POINT.
+    RANDOMLY DURING THE GAME, THE SHEEP TURN INTO A MONSTER
+    THAT CHASES YOU AND IF IT CATCHES YOU, YOU WILL LOSE A POINT.
 
-    THE
-    GAME ENDS IN 2 MINUTES.
+    WHEN A PLAYER
+    HITS A CERTAIN AMOUT OF POINTS, A MINI-GAME IS STARTED WHERE HE CAN EARN ONE
+    ADDITIONAL POINT.
+
+    THE MINI-GAMES ARE BOPIT, SIMON AND FORMS.
 
     ENJOOOOOOOOOOOY!
 
@@ -9003,7 +9008,7 @@ Animator:
   m_GameObject: {fileID: 1627979349}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9654a06403f1f1047a54e4866345cffb, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

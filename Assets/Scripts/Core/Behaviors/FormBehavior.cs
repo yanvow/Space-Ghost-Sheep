@@ -9,11 +9,19 @@ public class FormBehavior : AgentBehaviour
     public GameObject star;
     public GameObject magic_ring;
 
+    public AudioSource incrementAudio;
+
     public GameObject FormsMenu;
+    public GameObject MiniGameWon;
+    public GameObject MiniGameLost;
+
+    private int checkpointCount;
 
     private bool ringMode;
     private bool starMode;
     private bool squareMode;
+
+    IEnumerator co;
 
     // Start is called before the first frame update
     void Start()
@@ -22,56 +30,110 @@ public class FormBehavior : AgentBehaviour
         starMode = false;
         ringMode = false;
         squareMode = false;
+        checkpointCount = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(starMode){
 
-        }
     }
 
     public void GameEnter(){
-        StartCoroutine(waiter());
+        co = waiter();
+        StartCoroutine(co);
+    }
+
+    private bool isRing(){
+        if(ringMode && checkpointCount == 4){ return false;}
+        if(!ringMode){
+            Debug.Log("Lost!");
+            MiniGameLost.SetActive(true);
+            StartCoroutine(gameLost());
+            GameManager.isMiniGamefinished = true;
+            magic_ring.SetActive(true);
+            StopCoroutine(co);
+            return false;
+        }
+        else { return true;}
+    }
+
+    private bool isStar(){
+        if(starMode && checkpointCount == 4){ return false;}
+        if(!starMode){
+            Debug.Log("Lost!");
+            MiniGameLost.SetActive(true);
+            StartCoroutine(gameLost());
+            GameManager.isMiniGamefinished = true;
+            magic_ring.SetActive(true);
+            StopCoroutine(co);
+            return false;
+        }
+        else { return true;}
+    }
+
+    private bool isSquare(){
+        if(squareMode && checkpointCount == 4){ return false;}
+        if(!squareMode){
+            Debug.Log("Lost!");
+            MiniGameLost.SetActive(true);
+            StartCoroutine(gameLost());
+            GameManager.isMiniGamefinished = true;
+            magic_ring.SetActive(true);
+            StopCoroutine(co);
+            return false;
+        }
+        else { return true;}
+    }
+
+    IEnumerator gameLost()
+    {
+        yield return new WaitForSeconds(2);
+        MiniGameLost.SetActive(false);
     }
 
     IEnumerator waiter()
     {
-        yield return new WaitForSeconds(4);
-        Debug.Log("Game has started");
         FormsMenu.SetActive(true);
+        yield return new WaitForSeconds(6);
+        Debug.Log("Game has started");
+        FormsMenu.SetActive(false);
         yield return new WaitForSeconds(4);
         Debug.Log("Game is playing");
-        FormsMenu.SetActive(false);
         magic_ring.SetActive(false);
-        
         yield return new WaitForSeconds(2);
 
         Debug.Log("Ring");
         ring.SetActive(true);
         ringMode = true;
-        yield return new WaitForSeconds(20);
         GetComponent<CelluloAgent>().SetGoalPosition(7f, -8.7f, 185f);
-        if(ringMode){
-            ring.SetActive(false);
-        }
+        yield return new WaitWhile(isRing);
+        ring.SetActive(false);
+        checkpointCount = 0;
+
         Debug.Log("Square");
         square.SetActive(true);
         squareMode = true;
-        yield return new WaitForSeconds(20);
         GetComponent<CelluloAgent>().SetGoalPosition(7f, -8.7f, 185f);
-        if(squareMode){
-            square.SetActive(false);
-        }
+        yield return new WaitWhile(isSquare);
+        square.SetActive(false);
+        checkpointCount = 0;
+
         Debug.Log("Star");
         star.SetActive(true);
         starMode = true;
-        yield return new WaitForSeconds(20);
-        if(starMode){
-            star.SetActive(false);
-        }
+        GetComponent<CelluloAgent>().SetGoalPosition(7f, -8.7f, 185f);
+        yield return new WaitWhile(isSquare);
+        star.SetActive(false);
+        checkpointCount = 0;
+
+        yield return new WaitForSeconds(2);
+
+        MiniGameWon.SetActive(true);
+        yield return new WaitForSeconds(2);
         GetComponent<ScoreManager>().incrementScore();
+        incrementAudio.Play();
+        MiniGameWon.SetActive(false);
         magic_ring.SetActive(true);
         GameManager.isMiniGamefinished = true;
     }
@@ -93,7 +155,6 @@ public class FormBehavior : AgentBehaviour
             Destroy(other.transform.parent.gameObject);
             starMode = false;
         }
-        //other.attachedRigidbody.GetComponent<CelluloAgent>().SetVisualEffect(0, color, 0);
     }
 
    void OnTriggerExit(Collider other)
@@ -118,6 +179,7 @@ public class FormBehavior : AgentBehaviour
             || other.gameObject.name == "Checkpoint3" || other.gameObject.name == "Checkpoint4")){
             Debug.Log("Destroy");
             Destroy(other.gameObject);
+            checkpointCount++;
         }
     }
 }

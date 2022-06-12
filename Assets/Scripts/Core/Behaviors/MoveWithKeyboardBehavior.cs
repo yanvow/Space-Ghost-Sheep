@@ -43,9 +43,8 @@ public class MoveWithKeyboardBehavior : AgentBehaviour
                 vertical = Input.GetAxis("Vertical");
             }
             steering.linear = new Vector3(horizontal, 0, vertical) * agent.maxAccel;
-            steering.linear = this.transform.parent.TransformDirection(Vector3.ClampMagnitude(steering.linear , agent.maxAccel));
+            steering.linear = this.transform.parent.TransformDirection(Vector3.ClampMagnitude(steering.linear, agent.maxAccel));
         }
-        
         return steering;
     }
 

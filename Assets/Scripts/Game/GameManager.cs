@@ -52,8 +52,6 @@ public class GameManager : MonoBehaviour
       simonMode = false;
       isPlayingMiniGame = false;
       isMiniGamefinished = false;
-      player1.GetComponent<IdleBehavior>().enabled = false;
-      player2.GetComponent<IdleBehavior>().enabled = false;
       player1.GetComponent<BopItBehavior>().enabled = false;
       player2.GetComponent<BopItBehavior>().enabled = false;
       player1.GetComponent<FormBehavior>().enabled = false;
@@ -64,27 +62,27 @@ public class GameManager : MonoBehaviour
 
    void Update()
    {
-      if(scoreText1.text == "06" && simonMode == false){
+      if(scoreText1.text == "15" && simonMode == false){
          startSimon(player1, player2);
          PauseGameForMiniGame();
       }
-      if(scoreText2.text == "06" && simonMode == false){
+      if(scoreText2.text == "15" && simonMode == false){
          startSimon(player2, player1);
          PauseGameForMiniGame();
       }
-      if(scoreText1.text == "02" && bopItMode == false){
+      if(scoreText1.text == "05" && bopItMode == false){
          startBopIt(player1, player2);
          PauseGameForMiniGame();
       }
-      if(scoreText2.text == "02" && bopItMode == false){
+      if(scoreText2.text == "05" && bopItMode == false){
          startBopIt(player2, player1);
          PauseGameForMiniGame();
       }
-      if(scoreText1.text == "04" && formMode == false){
+      if(scoreText1.text == "10" && formMode == false){
          startForms(player1, player2);
          PauseGameForMiniGame();
       }
-      if(scoreText2.text == "04" && formMode == false){
+      if(scoreText2.text == "10" && formMode == false){
          startForms(player2, player1);
          PauseGameForMiniGame();
       }
@@ -161,11 +159,9 @@ public class GameManager : MonoBehaviour
    
    private void startBopIt(GameObject bopItPlayer, GameObject idlePlayer){
       Debug.Log("startBopIt");
-      //bopItPlayer.GetComponent<MoveWithKeyboardBehavior>().enabled = false;
-      //idlePlayer.GetComponent<MoveWithKeyboardBehavior>().enabled = false;
-      idlePlayer.GetComponent<IdleBehavior>().enabled = true;
       bopItPlayer.GetComponent<BopItBehavior>().enabled = true;
-      ghostSheep.GetComponent<CelluloAgent>().SetGoalPosition(7f, -5f, 185f);
+      ghostSheep.GetComponent<CelluloAgent>().SetGoalPosition(13f, -5f, 185f);
+      idlePlayer.GetComponent<CelluloAgent>().SetGoalPosition(1f, -5f, 185f);
       gem.GetComponent<Gem>().enabled = false;
       bopItMode = true;
       BopItButtons.SetActive(true);
@@ -175,10 +171,9 @@ public class GameManager : MonoBehaviour
 
    private void startForms(GameObject formPlayer, GameObject idlePlayer){
       Debug.Log("startForms");
-      //idlePlayer.GetComponent<MoveWithKeyboardBehavior>().enabled = false;
-      idlePlayer.GetComponent<IdleBehavior>().enabled = true;
       formPlayer.GetComponent<FormBehavior>().enabled = true;
-      ghostSheep.GetComponent<CelluloAgent>().SetGoalPosition(7f, -5f, 185f);
+      ghostSheep.GetComponent<CelluloAgent>().SetGoalPosition(13f, -5f, 185f);
+      idlePlayer.GetComponent<CelluloAgent>().SetGoalPosition(1f, -5f, 185f);
       gem.GetComponent<Gem>().enabled = false;
       formMode = true;
       Debug.Log("Game Enter");
@@ -187,10 +182,9 @@ public class GameManager : MonoBehaviour
 
    private void startSimon(GameObject simonPlayer, GameObject idlePlayer){
       Debug.Log("startSimon");
-      //idlePlayer.GetComponent<MoveWithKeyboardBehavior>().enabled = false;
-      idlePlayer.GetComponent<IdleBehavior>().enabled = true;
       simonPlayer.GetComponent<SimonBehavior>().enabled = true;
-      ghostSheep.GetComponent<CelluloAgent>().SetGoalPosition(7f, -5f, 185f);
+      ghostSheep.GetComponent<CelluloAgent>().SetGoalPosition(13f, -5f, 185f);
+      idlePlayer.GetComponent<CelluloAgent>().SetGoalPosition(1f, -5f, 185f);
       gem.GetComponent<Gem>().enabled = false;
       simonMode = true;
       CelluloImage.SetActive(true);

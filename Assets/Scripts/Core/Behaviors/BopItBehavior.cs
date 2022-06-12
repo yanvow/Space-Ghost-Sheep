@@ -10,13 +10,18 @@ public class BopItBehavior : AgentBehaviour
     public AudioSource liftAudio;
     public AudioSource moveAudio;
 
+    public AudioSource incrementAudio;
+
     public GameObject BopItMenu;
+    public GameObject MiniGameWon;
+    public GameObject MiniGameLost;
 
     public Button liftButton;
     public Button pushButton;
 
     private bool isKidnapped;
     private bool isPushed;
+    private bool isInMotion;
 
     IEnumerator co;
 
@@ -26,15 +31,15 @@ public class BopItBehavior : AgentBehaviour
         GetComponent<CelluloAgent>().SetGoalPosition(7f, -8.7f, 185f);
         isKidnapped = false;
         isPushed = false;
+        isInMotion = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-       //float previous_angle = transform.localEulerAngles.y;
-       //float current_angle = transform.localEulerAngles.y;
-       //GetComponent<CelluloAgent>().SetGoalPosition();
-
+        if(GetComponent<CelluloAgent>().GetSteeringLinear() != Vector3.zero){
+            isInMotion = true;
+        }
     }
 
     public void GameEnter(){
@@ -42,10 +47,18 @@ public class BopItBehavior : AgentBehaviour
         StartCoroutine(co);
     }
 
-    private bool isLifted(Vector3 t){
+    IEnumerator gameLost()
+    {
+        yield return new WaitForSeconds(2);
+        MiniGameLost.SetActive(false);
+    }
+
+    private bool isLifted(){
         if(isKidnapped){ return false;}
-        if(isPushed || transform.position != t){
+        if(isPushed || isInMotion){
             Debug.Log("Lost!");
+            MiniGameLost.SetActive(true);
+            StartCoroutine(gameLost());
             GameManager.isMiniGamefinished = true;
             StopCoroutine(co);
             return false;
@@ -53,10 +66,12 @@ public class BopItBehavior : AgentBehaviour
         else { return true;}
     }
 
-    private bool isPressed(Vector3 t){
+    private bool isPressed(){
         if(isPushed){ return false;}
-        if(isKidnapped || transform.position != t){
+        if(isKidnapped || isInMotion){
             Debug.Log("Lost!");
+            MiniGameLost.SetActive(true);
+            StartCoroutine(gameLost());
             GameManager.isMiniGamefinished = true;
             StopCoroutine(co);
             return false;
@@ -64,10 +79,12 @@ public class BopItBehavior : AgentBehaviour
         else { return true;}
     }
 
-    private bool isMoving(Vector3 t){
-        if(transform.position != t){ return false;}
+    private bool isMoving(){
+        if(isInMotion){ return false;}
         if(isPushed || isKidnapped){
             Debug.Log("Lost!");
+            MiniGameLost.SetActive(true);
+            StartCoroutine(gameLost());
             GameManager.isMiniGamefinished = true;
             StopCoroutine(co);
             return false;
@@ -77,71 +94,74 @@ public class BopItBehavior : AgentBehaviour
 
     IEnumerator waiter()
     {
-        yield return new WaitForSeconds(4);
-        Debug.Log("Game has started");
         BopItMenu.SetActive(true);
+        yield return new WaitForSeconds(6);
+        Debug.Log("Game has started");
+        BopItMenu.SetActive(false);
         yield return new WaitForSeconds(4);
         Debug.Log("Game is playing");
-        BopItMenu.SetActive(false);
-
         yield return new WaitForSeconds(2);
+
+        isKidnapped = false;
+        isPushed = false;
+        isInMotion = false;
 
         Debug.Log("lift");
         liftAudio.Play();
-        Vector3 t = transform.position;
-        yield return new WaitWhile(() => isLifted(t));
+        yield return new WaitWhile(isLifted);
+        
+        yield return new WaitForSeconds(2);
         isKidnapped = false;
-
-        yield return new WaitForSeconds(2);
-
-        Debug.Log("push");
-        pushAudio.Play();
-        t = transform.position;
-        yield return new WaitWhile(() => isPressed(t));
-        isPushed = false; 
-
-        yield return new WaitForSeconds(2);
 
         Debug.Log("move");
         moveAudio.Play();
-        t = transform.position;
-        yield return new WaitWhile(() => isMoving(t));
+        yield return new WaitWhile(isMoving);
 
-        yield return new WaitForSeconds(4);
-        GameManager.isMiniGamefinished = true;
+        yield return new WaitForSeconds(2);
+        isInMotion = false;
 
-        /* for (int i = 0; i < 10; i++){
-            int j = Random.Range(0, 2);
-            long s = 10;
-            if (j == 0){
-                liftAudio.Play();
-                while(!kidnapped && s > 0){
-                    s =- time % 10;
-                }
-                Debug.Log(s);
-                kidnapped = false; 
-            }else if (j == 1){
-                pushAudio.Play();
-                while(!touch && s > 0){
-                    s =- time % 10;
-                }
-                Debug.Log(touch);
-                touch = false; 
-            }else if (j == 2){
-                Debug.Log("move");
-                moveAudio.Play();
-                var t = transform.position;
-                while(transform.position == t){
-                    s =- time % 10;
-                }
-            }else{
-                Debug.Log("error");
-            }
+        Debug.Log(GetComponent<CelluloAgent>().GetSteeringLinear());
+        Debug.Log("lift");
+        liftAudio.Play();
+        yield return new WaitWhile(isLifted);
         
+        yield return new WaitForSeconds(2);
+        isKidnapped = false;
 
-         Debug.Log("Game has ended");
-        //Beginaudio.Stop();
-        }*/
+        Debug.Log("push");
+        pushAudio.Play();
+        yield return new WaitWhile(isPressed);
+
+        yield return new WaitForSeconds(2);
+        isPushed = false;
+
+        Debug.Log("push");
+        pushAudio.Play();
+        yield return new WaitWhile(isPressed);
+
+        yield return new WaitForSeconds(2);
+        isPushed = false; 
+
+        Debug.Log("lift");
+        liftAudio.Play();
+        yield return new WaitWhile(isLifted);
+
+        yield return new WaitForSeconds(2);
+        isKidnapped = false;
+
+        Debug.Log("move");
+        moveAudio.Play();
+        yield return new WaitWhile(isMoving);
+
+        yield return new WaitForSeconds(2);
+        isInMotion = false;
+
+        MiniGameWon.SetActive(true);
+        yield return new WaitForSeconds(2);
+        GetComponent<ScoreManager>().incrementScore();
+        incrementAudio.Play();
+        MiniGameWon.SetActive(false);
+        GameManager.isMiniGamefinished = true;
     }
 
     public override void OnCelluloKidnapped(){

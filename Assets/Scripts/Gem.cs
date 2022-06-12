@@ -19,7 +19,7 @@ public class Gem : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other){
-        if(other.transform.parent.gameObject.CompareTag("CelluloDog")){
+        if(other.transform.parent.gameObject.CompareTag("CelluloDog") && !GameManager.isPlayingMiniGame){
             gameObject.SetActive(false);
             other.transform.parent.gameObject.GetComponent<MoveWithKeyboardBehavior>().hasGem = true;
             collectAudio.Play();
